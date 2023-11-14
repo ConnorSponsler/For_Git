@@ -15,8 +15,8 @@ int main()
 
 
 
-  double Emin=6.5e2*units.GeV;
-  double Emax=8e2*units.GeV;
+  double Emin=1e1*units.GeV;
+  double Emax=1e5*units.GeV;
   int Ebin=1000;
   double czmin=0;
   double czmax=1;
