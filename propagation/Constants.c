@@ -1,8 +1,8 @@
 //1 or 0 to turn off various parts of model
-double quasi = 1;
-double quasi1 = 1;
-double quasi2 = 1;
-double quasi3 = 1;
+double quasi = 0;
+double quasi1 = 0;
+double quasi2 = 0;
+double quasi3 = 0;
 double standard = 1;
 
 double QM1 = quasi1*231.373; //MassDiff from e- neutrino in eV

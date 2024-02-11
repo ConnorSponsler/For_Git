@@ -32,8 +32,12 @@ class nuSQUIDSNSI: public nuSQUIDS {
       double CC = HI_prefactor*current_density*current_ye;
       double NC= -0.5*HI_prefactor*current_density*(1.0-current_ye);
       double BSMC = DMP_prefactor*current_density;    
+      if(numneu != 3){
+        return BSMC*NSI_evol[ei]+CC*SI_CC_evol[ei]+NC*SI_NC_evol[ei];
+      } else{
+        return CC*SI_CC_evol[ei]+NC*SI_NC_evol[ei];
+      }
       
-      return BSMC*NSI_evol[ei]+CC*SI_CC_evol[ei]+NC*SI_NC_evol[ei];
     }
     
     double GetCurrentDensity() const {

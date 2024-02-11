@@ -11,11 +11,11 @@ int main()
 {
   unsigned int numneu;
   squids::Const units;
-  numneu = 6;
+  numneu = 3;
 
 
 
-  double Emin=1e1*units.GeV;
+  double Emin=1e-1*units.GeV;
   double Emax=1e5*units.GeV;
   int Ebin=1000;
   double czmin=0;
