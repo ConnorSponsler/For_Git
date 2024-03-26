@@ -16,7 +16,7 @@ zen_deg_grid = np.degrees(zen_grid)
 
 h_grid = np.logspace(6.778, 2,h_pts) # altitudes from 60km to 1m  (in cm)
 for month in months:
-    f = open("ATM_Particle_Flux_"+month+".txt", "w")
+    f = open("Full_Flux_"+month+".txt", "w")
     mceq = MCEqRun( interaction_model='SIBYLL23C', primary_model = (crf.HillasGaisser2012, 'H3a'), theta_deg = zen_deg_grid[0], density_model=('MSIS00_IC',('SouthPole',month)),
     )
     
@@ -49,18 +49,9 @@ for month in months:
             antinue_flux = np.array(antinue_flux)
             antinumu_flux = np.array(antinumu_flux)
             antinutau_flux = np.array(antinutau_flux)
-
-            # Calculate the differential flux with respect to height
-            #(negative because cumulative production (flux) increases as height decreases)
-            diff_nue = -1*np.gradient(nue_flux, h_grid)
-            diff_numu = -1*np.gradient(numu_flux, h_grid)
-            diff_nutau = -1*np.gradient(nutau_flux, h_grid)
-            diff_antinue = -1*np.gradient(antinue_flux, h_grid)
-            diff_antinumu = -1*np.gradient(antinumu_flux, h_grid)
-            diff_antinutau = -1*np.gradient(antinutau_flux, h_grid)
         
             # Write the energy and differential flux at each altitude to the file
             for idx, altitude in enumerate(h_grid):
-                f.write(f"{coszen_grid[izen]} {h_grid[idx]} {mceq.e_grid[ien]} {diff_nue[idx]} {diff_antinue[idx]} {diff_numu[idx]} {diff_antinumu[idx]} {diff_nutau[idx]} {diff_antinutau[idx]}\n")
+                f.write(f"{coszen_grid[izen]} {h_grid[idx]} {mceq.e_grid[ien]} {nue_flux[idx]} {antinue_flux[idx]} {numu_flux[idx]} {antinumu_flux[idx]} {nutau_flux[idx]} {antinutau_flux[idx]}\n")
         
 f.close()
